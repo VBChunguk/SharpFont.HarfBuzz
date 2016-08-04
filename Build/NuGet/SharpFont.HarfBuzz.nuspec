@@ -2,18 +2,20 @@
 <package >
   <metadata>
     <id>SharpFont.HarfBuzz</id>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <title>SharpFont.HarfBuzz</title>
     <authors>Robert Rouhani</authors>
-    <owners>Robert Rouhani</owners>
-    <licenseUrl>https://github.com/Robmaister/SharpFont.HarfBuzz/blob/master/LICENSE</licenseUrl>
-    <projectUrl>https://github.com/Robmaister/SharpFont.HarfBuzz</projectUrl>
+    <owners>VBChunguk</owners>
+    <licenseUrl>https://github.com/VBChunguk/SharpFont.HarfBuzz/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/VBChunguk/SharpFont.HarfBuzz</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Cross-platform HarfBuzz bindings for C#.</description>
+    <description>
+      This is a fork for use in osu!.
+      Cross-platform HarfBuzz bindings for C#.
+    </description>
     <releaseNotes>
-      - Initial release with incomplete API and stock DLLs
-      - Theoretical Linux support and no OS X support as of yet.
-      - Fixed incorrect package title.
+      - Add more API bindings.
+      - Fix package version bug.
     </releaseNotes>
     <copyright>Copyright (c) 2012-2016 Robert Rouhani</copyright>
     <tags>harfbuzz freetype font bindings wrapper text layout unicode</tags>
@@ -28,6 +30,6 @@
     <file src="..\..\Binaries\SharpFont.HarfBuzz.Example\Release\libintl-8.dll" target="bin" />
     <file src="SharpFont.HarfBuzz.props" target="build" />
     <file src="..\..\Binaries\SharpFont.HarfBuzz\Release\SharpFont.HarfBuzz.dll.config" target="config" />
-    <file src="..\..\Binaries\SharpFont.HarfBuzz\Release\SharpFont.HarfBuzz.dll" target="lib\net20" />
+    <file src="..\..\Binaries\SharpFont.HarfBuzz\Release\SharpFont.HarfBuzz.dll" target="lib\net45" />
   </files>
 </package>
