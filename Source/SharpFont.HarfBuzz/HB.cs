@@ -36,9 +36,25 @@ namespace SharpFont.HarfBuzz
 			return hb_version_atleast((uint)major, (uint)minor, (uint)micro);
 		}
 
-		public static void Shape(this Font font, Buffer buffer)
+        public static void Shape(this Font font, Buffer buffer)
+        {
+            Shape(font, buffer, new string[] { });
+        }
+
+        public static void Shape(this Font font, Buffer buffer, string[] features)
 		{
-			HB.hb_shape(font.Reference, buffer.Reference, IntPtr.Zero, 0);
-		}
+            var arr = IntPtr.Zero;
+            if (features.Length > 0)
+            {
+                arr = Marshal.AllocHGlobal(16 * features.Length);
+                for (var i = 0; i < features.Length; i++)
+                {
+                    var str = System.Text.Encoding.ASCII.GetBytes(features[i]);
+                    HB.hb_feature_from_string(str, str.Length, arr + (i * 16));
+                }
+            }
+            HB.hb_shape(font.Reference, buffer.Reference, arr, features.Length);
+            if (arr != IntPtr.Zero) Marshal.FreeHGlobal(arr);
+        }
 	}
 }

@@ -255,7 +255,7 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_buffer_set_flags();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_buffer_set_language();
+		internal static extern void hb_buffer_set_language(IntPtr buffer, IntPtr language);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_buffer_set_length();
@@ -324,7 +324,7 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_face_set_user_data();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_feature_from_string();
+		internal static extern bool hb_feature_from_string(byte[] str, int len, IntPtr feature);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_feature_to_string();
@@ -435,7 +435,7 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_font_get_glyph_h_origin();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_font_get_glyph_kerning_for_direction();
+		internal static extern void hb_font_get_glyph_kerning_for_direction(IntPtr font, uint first_glyph, uint second_glyph, Direction direction, out int x, out int y);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_font_get_glyph_name();
@@ -507,10 +507,10 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_glib_script_to_script();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_language_from_string();
+		internal static extern IntPtr hb_language_from_string(byte[] str, int len);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_language_get_default();
+		internal static extern IntPtr hb_language_get_default();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_language_to_string();
@@ -531,7 +531,7 @@ namespace SharpFont.HarfBuzz
 		internal static extern void hb_ot_layout_get_glyphs_in_class();
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
-		internal static extern void hb_ot_layout_get_ligature_carets();
+		internal static extern uint hb_ot_layout_get_ligature_carets(IntPtr font, Direction direction, uint glyph, uint start_offset, IntPtr caret_count, IntPtr caret_array);
 
 		[DllImport(HarfBuzzDll, CallingConvention = CallConvention)]
 		internal static extern void hb_ot_layout_get_size_params();

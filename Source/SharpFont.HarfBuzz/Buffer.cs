@@ -21,6 +21,13 @@ namespace SharpFont.HarfBuzz
 
 		#region Properties
 		public Direction Direction { set { HB.hb_buffer_set_direction(reference, value); } }
+        public string Language {
+            set
+            {
+                var str = System.Text.Encoding.ASCII.GetBytes(value);
+                HB.hb_buffer_set_language(reference, HB.hb_language_from_string(str, str.Length));
+            }
+        }
 		// Arabic
 		public Script Script { set { HB.hb_buffer_set_script(reference, value); } }
 		public int Length { get { return HB.hb_buffer_get_length(reference); } }
